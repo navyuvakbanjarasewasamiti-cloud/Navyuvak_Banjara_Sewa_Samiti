@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navyuvak Banjara Sewa Samiti</title>
+  <title>नवयुवक बंजारा सेवा समिति</title>
   
-  <!-- Blogger UI Styling Exact Match -->
   <style>
     body {
       margin: 0;
@@ -25,7 +24,7 @@
       z-index: 1000;
     }
     .logo {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: bold;
     }
     nav a {
@@ -39,20 +38,18 @@
       color: #38bdf8;
     }
     
-    /* Running Text Ticker (Guruwar Meeting Details) */
     .ticker-container {
-      background: #e2e8f0;
+      background: #fef08a;
       overflow: hidden;
       white-space: nowrap;
       padding: 10px 0;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
       font-weight: bold;
       color: #1e293b;
     }
     .ticker-text {
       display: inline-block;
       padding-left: 100%;
-      animation: ticker 25s linear infinite;
+      animation: ticker 15s linear infinite;
     }
     @keyframes ticker {
       0% { transform: translate3d(0, 0, 0); }
@@ -63,10 +60,9 @@
       width: 90%;
       max-width: 1100px;
       margin: auto;
-      padding: 20px 0;
+      padding: 30px 0;
     }
 
-    /* Section Title Styles */
     h2.section-title {
       color: #0f172a;
       border-left: 5px solid #2563eb;
@@ -75,14 +71,14 @@
       font-size: 22px;
     }
 
-    /* Fund Tracker Dashboard Card */
-    .fund-card {
+    .steps-card, .fund-card, .meeting-card, .form-container {
       background: white;
-      padding: 20px;
+      padding: 15px;
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
+
     .fund-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -100,31 +96,24 @@
     .fund-expense { background: #ef4444; }
     .fund-balance { background: #2563eb; }
 
-    /* Post Grid for Meetings & Documents */
     .post-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
+    
     .post-card {
       background: white;
-      padding: 20px;
+      padding: 15px;
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
+    
     .post-card h3 {
-      margin: 0 0 10px 0;
+      margin: 10px 0;
       font-size: 18px;
-      color: #1f2937;
     }
-    .post-card p {
-      font-size: 14px;
-      color: #4b5563;
-      line-height: 1.5;
-    }
+    
     .badge {
       display: inline-block;
       padding: 4px 8px;
@@ -132,35 +121,24 @@
       font-size: 12px;
       font-weight: bold;
       margin-bottom: 10px;
-      align-self: flex-start;
     }
     .badge-upcoming { background: #fef3c7; color: #d97706; }
     .badge-completed { background: #d1fae5; color: #065f46; }
 
     .action-btn {
       display: inline-block;
-      margin-top: 15px;
-      padding: 10px 15px;
+      margin-top: 10px;
+      padding: 8px 15px;
       background: #2563eb;
       color: white;
       border-radius: 5px;
       text-decoration: none;
       font-size: 14px;
-      text-align: center;
       border: none;
       cursor: pointer;
     }
     .action-btn:hover { background: #1d4ed8; }
 
-    /* Registration Form Styling */
-    .form-container {
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      max-width: 600px;
-      margin: auto;
-    }
     .form-group {
       margin-bottom: 15px;
     }
@@ -168,13 +146,12 @@
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
-      font-size: 14px;
     }
     .form-group input, .form-group textarea {
       width: 100%;
       padding: 10px;
       box-sizing: border-box;
-      border: 1px solid #cbd5e1;
+      border: 1px solid #ccc;
       border-radius: 5px;
     }
 
@@ -182,230 +159,127 @@
       background: #0f172a;
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 15px;
       margin-top: 40px;
-      font-size: 14px;
     }
 
-    /* Page View Toggle Logic */
     .page { display: none; }
     .active-page { display: block; }
-
-    @media(max-width:768px){
-      header { flex-direction: column; gap: 10px; text-align: center; }
-      nav a { margin: 5px 8px; display: inline-block; }
-    }
   </style>
 </head>
 <body>
 
-  <!-- Header Section -->
   <header>
-    <div class="logo">Navyuvak Banjara Sewa Samiti</div>
+    <div class="logo">नवयुवक बंजारा सेवा समिति</div>
     <nav>
-      <a onclick="showPage('home')">Home</a>
-      <a onclick="showPage('fund-history')">Fund Month-Wise</a>
-      <a onclick="showPage('register')">Join Samiti (Click Button)</a>
-      <a onclick="showPage('admin')">Admin Panel</a>
+      <a onclick="showPage('home')">होम पेज</a>
+      <a onclick="showPage('fund')">फ़ंड का हिसाब</a>
+      <a onclick="showPage('meetings')">मीटिंग्स</a>
+      <a onclick="showPage('register')">जुड़ें</a>
+      <a onclick="showPage('admin')">एडमिन</a>
     </nav>
   </header>
 
-  <!-- Running Ticker between Header and Body -->
   <div class="ticker-container">
-    <div class="ticker-text" id="liveTicker">⚠️ Suchna: Agami Guruwar ki meeting shyam 7 baje Samiti Karyalay par nirdharit ki gayi hai. Sabhi sadasyo ki upasthiti anivarya hai.</div>
+    <div class="ticker-text">गुरुवार की मीटिंग शाम 7 बजे होगी, सभी की उपस्थिति अनिवार्य है।</div>
   </div>
 
   <div class="container">
     
-    <!-- HOME PAGE -->
     <div id="homePage" class="page active-page">
-      
-      <!-- Live Fund Values Grid -->
-      <h2 class="section-title">Samajik Fund Dashboard</h2>
+      <h2 class="section-title">समिति के मुख्य ऐतिहासिक कदम</h2>
+      <div class="steps-card">
+        <h3>दुख की घड़ी में संबल (भोजन व्यवस्था)</h3>
+        <p>जयपुर के किसी भी बंजारा भाई-बंधु के घर में मृत्यु होने पर, उस शोक संतप्त परिवार के घर का पहला खाना नवयुवक बंजारा सेवा समिति, जयपुर की ओर से किया जाएगा।</p>
+      </div>
+
+      <h2 class="section-title">समाज गौरव: कन्यादान का प्रथम पावन अवसर</h2>
+      <div class="steps-card">
+        <h3>बेटी को आशीर्वाद (कन्यादान राशि)</h3>
+        <p>पूरा नवयुवक बंजारा समाज ने जो वादा किया था, उसे निभाने का प्रथम पावन मौका हमें प्राप्त हुआ है। हम सभी भाई मिलकर इस मांगलिक उत्सव में भाग लेंगे और वर-वधुओं को अपना स्नेह व आशीर्वाद प्रदान करेंगे।</p>
+      </div>
+    </div>
+
+    <div id="fundPage" class="page">
+      <h2 class="section-title">समाज के फ़ंड का विवरण</h2>
       <div class="fund-card">
         <div class="fund-grid">
-          <div class="fund-box fund-total">Kul Amount<br><span id="totalFund">₹0</span></div>
-          <div class="fund-box fund-expense">Kul Kharch<br><span id="totalExpense">₹0</span></div>
-          <div class="fund-box fund-balance">Net Bachat<br><span id="netBalance">₹0</span></div>
+          <div class="fund-box fund-total">कुल अमाउंट<br><span id="totalAmount">₹150000</span></div>
+          <div class="fund-box fund-expense">कुल खर्च<br><span id="totalExpense">₹45000</span></div>
+          <div class="fund-box fund-balance">बचा बैलेंस<br><span id="netBalance">₹105000</span></div>
         </div>
       </div>
+      
+      <h2 class="section-title">मंथ-वाइज फ़ंड का हिसाब</h2>
+      <div class="post-grid" id="monthWiseGrid">
+        <div class="post-card">
+          <h3>मई 2026</h3>
+          <p>आय: ₹50000</p>
+          <p>खर्च: ₹15000</p>
+        </div>
+        <div class="post-card">
+          <h3>जून 2026</h3>
+          <p>आय: ₹40000</p>
+          <p>खर्च: ₹10000</p>
+        </div>
+      </div>
+    </div>
 
-      <!-- Meetings Section (Upcoming and Past Logs) -->
-      <h2 class="section-title">Samiti Meetings &amp; Decisions</h2>
+    <div id="meetingsPage" class="page">
+      <h2 class="section-title">मीटिंग्स और संबंधित दस्तावेज</h2>
       <div class="post-grid" id="meetingsGrid">
-        <!-- Dynamic cards load here -->
+        <div class="post-card">
+          <span class="badge badge-upcoming">आगामी मीटिंग</span>
+          <h3>गुरुवार मंथली पंचायत</h3>
+          <p>सामाजिक विकास और भवन के निर्माण हेतु चर्चा।</p>
+          <a class="action-btn" href="#">दस्तावेज़ देखें</a>
+        </div>
+        <div class="post-card">
+          <span class="badge badge-completed">हो चुकी मीटिंग</span>
+          <h3>पिछली मीटिंग</h3>
+          <p>पिछली मीटिंग में छात्रवृति देने का निर्णय लिया गया।</p>
+          <a class="action-btn" href="#">दस्तावेज़ देखें</a>
+        </div>
       </div>
     </div>
 
-    <!-- MONTH-WISE FUND HISTORY PAGE -->
-    <div id="fundHistoryPage" class="page">
-      <h2 class="section-title">Month-Wise Fund Details</h2>
-      <div id="monthWiseGrid" class="post-grid">
-        <!-- Monthly details load here -->
-      </div>
-    </div>
-
-    <!-- REGISTRATION FORM PAGE -->
     <div id="registerPage" class="page">
+      <h2 class="section-title">नवयुवक बंजारा सेवा समिति से जुड़ें</h2>
       <div class="form-container">
-        <h2 style="margin-top:0; color:#0f172a;">Sadasya Panjikaran Form</h2>
-        <form id="registrationForm" onsubmit="handleRegister(event)">
-          <div class="form-group"><label>Sadasya ka Naam (Name)</label><input type="text" id="regName" required></div>
-          <div class="form-group"><label>Pita ka Naam (Father's Name)</label><input type="text" id="regFather" required></div>
-          <div class="form-group"><label>WhatsApp Mobile Number</label><input type="tel" id="regWhatsapp" required></div>
-          <div class="form-group"><label>Alternative Mobile Number</label><input type="tel" id="regAltMobile"></div>
-          <div class="form-group"><label>Email ID</label><input type="email" id="regEmail"></div>
-          <div class="form-group"><label>Gotra</label><input type="text" id="regGotra" required></div>
-          <div class="form-group"><label>Pura Pata (Address)</label><textarea id="regAddress" rows="3" required></textarea></div>
-          <button type="submit" class="action-btn" style="width:100%;">Samiti me Shamil Hon</button>
+        <form id="regForm" onsubmit="event.preventDefault(); alert('रजिस्ट्रेशन सबमिट हो गया है।');">
+          <div class="form-group"><label>नाम</label><input type="text" required></div>
+          <div class="form-group"><label>पिता का नाम</label><input type="text" required></div>
+          <div class="form-group"><label>व्हाट्सएप मोबाइल नंबर</label><input type="tel" required></div>
+          <div class="form-group"><label>वैकल्पिक मोबाइल नंबर</label><input type="tel"></div>
+          <div class="form-group"><label>ईमेल</label><input type="email"></div>
+          <div class="form-group"><label>गोत्र</label><input type="text" required></div>
+          <div class="form-group"><label>पता</label><textarea required></textarea></div>
+          <button type="submit" class="action-btn">सबमिट करें</button>
         </form>
       </div>
     </div>
 
-    <!-- ADMIN LOGIN & CONTROL PANEL -->
     <div id="adminPage" class="page">
-      <div class="form-container" id="adminAuth">
-        <h2 style="margin-top:0;">Admin Login</h2>
-        <div class="form-group"><label>Password</label><input type="password" id="adminPassword"></div>
-        <button class="action-btn" onclick="checkAdminAuth()">Login</button>
-      </div>
-      
-      <div id="adminControls" style="display:none;">
-        <h2 style="margin-top:0; color:#ef4444;">Admin Dashboard</h2>
-        
-        <!-- Update Fund -->
-        <h3>1. Fund Update Karein</h3>
-        <div class="form-group"><label>Kul Amount</label><input type="number" id="admTotal"></div>
-        <div class="form-group"><label>Kul Kharch</label><input type="number" id="admExpense"></div>
-        <button class="action-btn" onclick="updateFundData()">Fund Change Save Karein</button>
-        
-        <!-- Add/Move Meeting -->
-        <h3>2. Nayi Meeting Add Karein</h3>
-        <div class="form-group"><label>Meeting Title/Heading</label><input type="text" id="meetTitle" placeholder="e.g., Agami Guruwar Vishesh Meeting"></div>
-        <div class="form-group"><label>Status</label>
-          <select id="meetStatus" style="width:100%; padding:10px; border-radius:5px;"><option value="upcoming">Aagami Meeting</option><option value="completed">Completed Meeting</option></select>
-        </div>
-        <div class="form-group"><label>Details / Short Summary</label><textarea id="meetDesc" rows="3"></textarea></div>
-        <div class="form-group"><label>Document Link (Google Drive/PDF Link)</label><input type="url" id="meetDoc" placeholder="https://drive.google.com/..."></div>
-        <button class="action-btn" onclick="addMeetingData()">Meeting Publish Karein</button>
+      <h2 class="section-title">एडमिन लॉगिन</h2>
+      <div class="form-container">
+        <div class="form-group"><label>पासवर्ड</label><input type="password" id="pass"></div>
+        <button class="action-btn" onclick="if(document.getElementById('pass').value === 'admin') alert('लॉगिन सफल हुआ।'); else alert('गलत पासवर्ड।');">लॉगिन करें</button>
       </div>
     </div>
 
   </div>
 
   <footer>
-    &#169; 2026 Navyuvak Banjara Sewa Samiti | All Rights Reserved
+    <p>© 2026 नवयुवक बंजारा सेवा समिति | सर्वाधिकार सुरक्षित</p>
   </footer>
 
-  <!-- Application Logic Engine (JavaScript) -->
   <script>
-    // Mock Data Store (Real-time storage configuration using localStorage for persistence)
-    let appData = JSON.parse(localStorage.getItem('samiti_data')) || {
-      funds: { total: 150000, expense: 45000 },
-      meetings: [
-        { id: 1, title: "Guruwar Monthly Panchayat", status: "upcoming", desc: "Samajik vikas aur navin sanskritik bhavan ke nirman hetu charcha.", doc: "" },
-        { id: 2, title: "Banjara Shiksha Kosh Baithak", status: "completed", desc: "Pichli meeting me pass hua ki sabhi chatro ko chhatravriti samiti degi.", doc: "https://google.com" }
-      ],
-      monthlyFunds: [
-        { month: "May 2026", total: 50000, expense: 12000, balance: 38000 },
-        { month: "June 2026", total: 100000, expense: 33000, balance: 67000 }
-      ]
-    };
-
-    function saveData() {
-      localStorage.setItem('samiti_data', JSON.stringify(appData));
-      renderApp();
-    }
-
     function showPage(pageId) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
-      if(pageId === 'home') document.getElementById('homePage').classList.add('active-page');
-      if(pageId === 'fund-history') document.getElementById('fundHistoryPage').classList.add('active-page');
-      if(pageId === 'register') document.getElementById('registerPage').classList.add('active-page');
-      if(pageId === 'admin') document.getElementById('adminPage').classList.add('active-page');
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active-page'));
+      document.getElementById(pageId + 'Page').classList.add('active-page');
     }
-
-    function renderApp() {
-      // Calculate & Render Live Funds
-      const net = appData.funds.total - appData.funds.expense;
-      document.getElementById('totalFund').innerText = "₹" + appData.funds.total;
-      document.getElementById('totalExpense').innerText = "₹" + appData.funds.expense;
-      document.getElementById('netBalance').innerText = "₹" + net;
-
-      // Render Meetings Section
-      const grid = document.getElementById('meetingsGrid');
-      grid.innerHTML = "";
-      appData.meetings.forEach(m => {
-        const card = document.createElement('div');
-        card.className = "post-card";
-        const isUpcoming = m.status === 'upcoming';
-        card.innerHTML = `
-          <div>
-            <span class="badge ${isUpcoming ? 'badge-upcoming' : 'badge-completed'}">${isUpcoming ? 'Aagami Meeting' : 'Completed Meeting'}</span>
-            <h3>${m.title}</h3>
-            <p>${m.desc}</p>
-          </div>
-          ${m.doc ? `<a href="${m.doc}" target="_blank" class="action-btn" style="background:#10b981;">View Document Sheets</a>` : '<p style="font-size:12px; color:gray; italic">No documents attached</p>'}
-        `;
-        grid.appendChild(card);
-      });
-
-      // Render Month-Wise Fund
-      const monthGrid = document.getElementById('monthWiseGrid');
-      monthGrid.innerHTML = "";
-      appData.monthlyFunds.forEach(f => {
-        const card = document.createElement('div');
-        card.className = "post-card";
-        card.innerHTML = `
-          <h3>${f.month} Hisab</h3>
-          <p>Aaya Fund: ₹${f.total}<br>Kharach: ₹${f.expense}</p>
-          <strong style="color:#2563eb;">Bachat: ₹${f.balance}</strong>
-        `;
-        monthGrid.appendChild(card);
-      });
-    }
-
-    // Form Handling
-    function handleRegister(e) {
-      e.preventDefault();
-      alert("Dhanyawad! Aapka registration data Navyuvak Banjara Sewa Samiti Admin panel ko bhej diya gaya hai.");
-      document.getElementById('registrationForm').reset();
-      showPage('home');
-    }
-
-    // Admin Access Management
-    function checkAdminAuth() {
-      const pass = document.getElementById('adminPassword').value;
-      if(pass === "admin123") { // Default system password
-        document.getElementById('adminAuth').style.display = "none";
-        document.getElementById('adminControls').style.display = "block";
-      } else {
-        alert("Galat Password!");
-      }
-    }
-
-    function updateFundData() {
-      appData.funds.total = parseInt(document.getElementById('admTotal').value) || 0;
-      appData.funds.expense = parseInt(document.getElementById('admExpense').value) || 0;
-      saveData();
-      alert("Fund data successfully update ho gaya.");
-    }
-
-    function addMeetingData() {
-      const title = document.getElementById('meetTitle').value;
-      const status = document.getElementById('meetStatus').value;
-      const desc = document.getElementById('meetDesc').value;
-      const doc = document.getElementById('meetDoc').value;
-
-      if(title && desc) {
-        appData.meetings.unshift({ id: Date.now(), title, status, desc, doc });
-        saveData();
-        alert("Meeting list me jod di gayi hai.");
-      }
-    }
-
-    // Initial Launch Execution
-    window.onload = renderApp;
   </script>
 </body>
 </html>
+``` आपके ब्लॉग के अनुसार दिखेगा।
