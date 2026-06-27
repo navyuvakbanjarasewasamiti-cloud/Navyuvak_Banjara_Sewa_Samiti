@@ -12,6 +12,7 @@
       background: #f3f4f6;
       color: #333;
     }
+    
     header {
       background: #0f172a;
       color: white;
@@ -23,10 +24,12 @@
       top: 0;
       z-index: 1000;
     }
+    
     .logo {
       font-size: 22px;
       font-weight: bold;
     }
+    
     nav a {
       color: white;
       text-decoration: none;
@@ -34,6 +37,7 @@
       font-size: 14px;
       cursor: pointer;
     }
+    
     nav a:hover {
       color: #38bdf8;
     }
@@ -46,11 +50,13 @@
       font-weight: bold;
       color: #1e293b;
     }
+    
     .ticker-text {
       display: inline-block;
       padding-left: 100%;
       animation: ticker 15s linear infinite;
     }
+    
     @keyframes ticker {
       0% { transform: translate3d(0, 0, 0); }
       100% { transform: translate3d(-100%, 0, 0); }
@@ -70,31 +76,6 @@
       margin-top: 30px;
       font-size: 22px;
     }
-
-    .steps-card, .fund-card, .meeting-card, .form-container {
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      margin-bottom: 20px;
-    }
-
-    .fund-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 15px;
-    }
-    .fund-box {
-      padding: 15px;
-      border-radius: 8px;
-      text-align: center;
-      color: white;
-      font-weight: bold;
-    }
-    .fund-total { background: #10b981; }
-    .fund-expense { background: #ef4444; }
-    .fund-balance { background: #2563eb; }
 
     .post-grid {
       display: grid;
@@ -125,7 +106,7 @@
     .badge-upcoming { background: #fef3c7; color: #d97706; }
     .badge-completed { background: #d1fae5; color: #065f46; }
 
-    .action-btn {
+    .read-more {
       display: inline-block;
       margin-top: 10px;
       padding: 8px 15px;
@@ -137,7 +118,24 @@
       border: none;
       cursor: pointer;
     }
-    .action-btn:hover { background: #1d4ed8; }
+    .read-more:hover { background: #1d4ed8; }
+
+    .fund-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .fund-box {
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+    }
+    .fund-total { background: #10b981; }
+    .fund-expense { background: #ef4444; }
+    .fund-balance { background: #2563eb; }
 
     .form-group {
       margin-bottom: 15px;
@@ -165,6 +163,19 @@
 
     .page { display: none; }
     .active-page { display: block; }
+
+    @media(max-width:768px){
+      header{
+        flex-direction:column;
+      }
+      nav {
+        margin-top: 10px;
+      }
+      nav a {
+        display: inline-block;
+        margin: 5px 8px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -188,21 +199,24 @@
     
     <div id="homePage" class="page active-page">
       <h2 class="section-title">समिति के मुख्य ऐतिहासिक कदम</h2>
-      <div class="steps-card">
-        <h3>दुख की घड़ी में संबल (भोजन व्यवस्था)</h3>
-        <p>जयपुर के किसी भी बंजारा भाई-बंधु के घर में मृत्यु होने पर, उस शोक संतप्त परिवार के घर का पहला खाना नवयुवक बंजारा सेवा समिति, जयपुर की ओर से किया जाएगा।</p>
-      </div>
+      <div class="post-grid">
+        <div class="post-card">
+          <h3>दुख की घड़ी में संबल (भोजन व्यवस्था)</h3>
+          <p>जयपुर के किसी भी बंजारा भाई-बंधु के घर में मृत्यु होने पर, उस शोक संतप्त परिवार के घर का पहला खाना नवयुवक बंजारा सेवा समिति, जयपुर की ओर से किया जाएगा।</p>
+          <a class="read-more" href="#">और जानें</a>
+        </div>
 
-      <h2 class="section-title">समाज गौरव: कन्यादान का प्रथम पावन अवसर</h2>
-      <div class="steps-card">
-        <h3>बेटी को आशीर्वाद (कन्यादान राशि)</h3>
-        <p>पूरा नवयुवक बंजारा समाज ने जो वादा किया था, उसे निभाने का प्रथम पावन मौका हमें प्राप्त हुआ है। हम सभी भाई मिलकर इस मांगलिक उत्सव में भाग लेंगे और वर-वधुओं को अपना स्नेह व आशीर्वाद प्रदान करेंगे।</p>
+        <div class="post-card">
+          <h3>बेटी को आशीर्वाद (कन्यादान राशि)</h3>
+          <p>पूरा नवयुवक बंजारा समाज ने जो वादा किया था, उसे निभाने का प्रथम पावन मौका हमें प्राप्त हुआ है। हम सभी भाई मिलकर इस मांगलिक उत्सव में भाग लेंगे।</p>
+          <a class="read-more" href="#">और जानें</a>
+        </div>
       </div>
     </div>
 
     <div id="fundPage" class="page">
       <h2 class="section-title">समाज के फ़ंड का विवरण</h2>
-      <div class="fund-card">
+      <div class="post-card">
         <div class="fund-grid">
           <div class="fund-box fund-total">कुल अमाउंट<br><span id="totalAmount">₹150000</span></div>
           <div class="fund-box fund-expense">कुल खर्च<br><span id="totalExpense">₹45000</span></div>
@@ -232,20 +246,20 @@
           <span class="badge badge-upcoming">आगामी मीटिंग</span>
           <h3>गुरुवार मंथली पंचायत</h3>
           <p>सामाजिक विकास और भवन के निर्माण हेतु चर्चा।</p>
-          <a class="action-btn" href="#">दस्तावेज़ देखें</a>
+          <a class="read-more" href="#">दस्तावेज़ देखें</a>
         </div>
         <div class="post-card">
           <span class="badge badge-completed">हो चुकी मीटिंग</span>
           <h3>पिछली मीटिंग</h3>
           <p>पिछली मीटिंग में छात्रवृति देने का निर्णय लिया गया।</p>
-          <a class="action-btn" href="#">दस्तावेज़ देखें</a>
+          <a class="read-more" href="#">दस्तावेज़ देखें</a>
         </div>
       </div>
     </div>
 
     <div id="registerPage" class="page">
       <h2 class="section-title">नवयुवक बंजारा सेवा समिति से जुड़ें</h2>
-      <div class="form-container">
+      <div class="post-card">
         <form id="regForm" onsubmit="event.preventDefault(); alert('रजिस्ट्रेशन सबमिट हो गया है।');">
           <div class="form-group"><label>नाम</label><input type="text" required></div>
           <div class="form-group"><label>पिता का नाम</label><input type="text" required></div>
@@ -254,16 +268,16 @@
           <div class="form-group"><label>ईमेल</label><input type="email"></div>
           <div class="form-group"><label>गोत्र</label><input type="text" required></div>
           <div class="form-group"><label>पता</label><textarea required></textarea></div>
-          <button type="submit" class="action-btn">सबमिट करें</button>
+          <button type="submit" class="read-more">सबमिट करें</button>
         </form>
       </div>
     </div>
 
     <div id="adminPage" class="page">
       <h2 class="section-title">एडमिन लॉगिन</h2>
-      <div class="form-container">
+      <div class="post-card">
         <div class="form-group"><label>पासवर्ड</label><input type="password" id="pass"></div>
-        <button class="action-btn" onclick="if(document.getElementById('pass').value === 'admin') alert('लॉगिन सफल हुआ।'); else alert('गलत पासवर्ड।');">लॉगिन करें</button>
+        <button class="read-more" onclick="if(document.getElementById('pass').value === 'admin') alert('लॉगिन सफल हुआ।'); else alert('गलत पासवर्ड।');">लॉगिन करें</button>
       </div>
     </div>
 
